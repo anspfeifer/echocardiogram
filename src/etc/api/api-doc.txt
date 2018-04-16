@@ -1,7 +1,22 @@
 GET /users
+	
 	200: array of users
 	204: when no content
 	
 GET /users/{id}
+	
 	200: user
+	400: when id is not a number
 	404: when does not exist an user with the id
+	
+POST /owners
+	
+	Body: {"name", "xxxx", "email", "x@x.x" ...}
+	Test to do:
+	- payload blank --> 400
+	- payload {}    --> 422
+	- payload {"name":"" } --> 422
+	
+	201: user created. Return id from user and location URL
+	400: when the body is nonexistent / incompatible
+	422: when some propertie from body is not valid
