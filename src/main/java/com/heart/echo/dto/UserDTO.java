@@ -24,6 +24,9 @@ public class UserDTO {
 
 	@NotEmpty
 	public String username;
+	
+	@NotEmpty
+	public String password;
 
 	public static User getEntity(UserDTO dto) {
 		User entity = new User();
@@ -32,6 +35,7 @@ public class UserDTO {
 		entity.setPhone(dto.phone);
 		entity.setProfile(dto.profile);
 		entity.setUsername(dto.username);
+		entity.setPassword(dto.password);
 		return entity;
 	}
 

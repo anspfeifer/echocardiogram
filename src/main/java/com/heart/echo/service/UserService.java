@@ -1,5 +1,7 @@
 package com.heart.echo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,12 @@ public class UserService {
 	
 	public Long insert(User user) {
 		user.setPassword(PasswordUtils.generateBCrypt(user.getPassword()));
-		User persisted = repository.save(user);
-		return persisted.getId();
+		repository.save(user);
+		return user.getId();
 	}
 	
+	public Optional<User> findByUsername(String username){
+		return Optional.ofNullable(repository.findByUsername(username));
+	}
+
 }

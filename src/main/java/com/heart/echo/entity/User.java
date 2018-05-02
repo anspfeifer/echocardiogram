@@ -19,16 +19,18 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Profile profile;
-	
+
 	private String name;
-	
+
+	private String email;
+
 	private String username;
-	
+
 	private String password;
-	
+
 	private String phone;
 
 	public Long getId() {
@@ -53,6 +55,14 @@ public class User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUsername() {

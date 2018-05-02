@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `echocardiogram`.`user` (
   `name` VARCHAR(70) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `username` VARCHAR(11) NOT NULL,
-  `password` VARCHAR(32) NOT NULL,
+  `password` VARCHAR(60) NOT NULL,
   `phone` VARCHAR(11) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
