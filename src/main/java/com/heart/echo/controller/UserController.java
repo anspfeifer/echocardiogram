@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,7 @@ import com.heart.echo.repository.UserRepository;
 import com.heart.echo.service.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -46,8 +47,9 @@ public class UserController {
 				: new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	@GetMapping(path = "{id}")
 	@ResponseBody
+	@GetMapping(path = "{id}")
+	@PreAuthorize("isAuthenticated()")
 	public UserDTO find(@PathVariable("id") Long id) {
 		log.info("Controller GET /users/" + id);
 
@@ -62,6 +64,7 @@ public class UserController {
 	}
 
 	@PostMapping
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<?> insert(@Valid @RequestBody UserDTO userDTO,
 			UriComponentsBuilder uriInfo) {
 

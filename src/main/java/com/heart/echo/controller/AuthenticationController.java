@@ -23,7 +23,7 @@ import com.heart.echo.dto.TokenDTO;
 import com.heart.echo.security.JwtTokenUtils;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 @CrossOrigin(origins = "*")
 public class AuthenticationController {
 

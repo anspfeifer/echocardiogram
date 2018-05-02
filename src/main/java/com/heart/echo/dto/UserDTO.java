@@ -27,11 +27,12 @@ public class UserDTO {
 	
 	@NotEmpty
 	public String password;
-
+	
 	public static User getEntity(UserDTO dto) {
 		User entity = new User();
 		entity.setId(dto.id);
 		entity.setName(dto.name);
+		entity.setEmail(dto.email);
 		entity.setPhone(dto.phone);
 		entity.setProfile(dto.profile);
 		entity.setUsername(dto.username);
@@ -43,6 +44,7 @@ public class UserDTO {
 		UserDTO dto = new UserDTO();
 		dto.id = entity.getId();
 		dto.name = entity.getName();
+		dto.email = entity.getEmail();
 		dto.phone = entity.getPhone();
 		dto.profile = entity.getProfile();
 		dto.username = entity.getUsername();

@@ -16,7 +16,8 @@ public class UserService {
 	private UserRepository repository;
 	
 	public Long insert(User user) {
-		user.setPassword(PasswordUtils.generateBCrypt(user.getPassword()));
+		String password = PasswordUtils.generateBCrypt(user.getPassword());
+		user.setPassword(password);
 		repository.save(user);
 		return user.getId();
 	}
