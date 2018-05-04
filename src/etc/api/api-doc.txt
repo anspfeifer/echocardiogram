@@ -1,3 +1,14 @@
+POST /api/login
+	Body: 
+	{
+		"username": "admin",
+		"password": "123456"
+	}
+	
+	200: { token: "xxxx" }
+	401: when credentials is not correct
+	? 422: when some propertie from body is not valid
+
 GET /users
 	
 	200: array of users
@@ -9,7 +20,7 @@ GET /users/{id}
 	400: when id is not a number
 	404: when does not exist an user with the id
 	
-POST /owners
+POST /users
 	
 	Body: {"name", "xxxx", "email", "x@x.x" ...}
 	Test to do:
